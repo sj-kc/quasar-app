@@ -1,14 +1,27 @@
 <template>
-  <q-page class="flex flex-center">
-    <img
-      alt="Quasar logo"
-      src="~assets/quasar-logo-full.svg"
-    >
-  </q-page>
+  <div>
+    <h1>Test</h1>
+    <div v-if="loaded">
+      <p>{{ stores }}</p>
+    </div>
+  </div>
 </template>
 
 <script>
+import store from "../store/store";
+
 export default {
-  name: 'PageIndex'
-}
+  name: "PageIndex",
+  computed: {
+    stores() {
+      return store.state.stores;
+    },
+    loaded() {
+      return store.state.loaded;
+    }
+  },
+  created() {
+    store.dispatch("fetchStores");
+  }
+};
 </script>
