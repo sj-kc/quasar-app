@@ -1,9 +1,11 @@
 <template>
   <div>
-    <h1>Test</h1>
+    <div v-if="!loaded">{{ this.$q.loading.show() }}</div>
     <div v-if="loaded">
+      {{ this.$q.loading.hide() }}
+      <h1>The Den Store</h1>
       <div v-for="store in stores" :key="store.id">
-        <q-card class="my-card">
+        <q-card class="my-card cursor-pointer">
           <q-card-section @click="() => getInfo(store)">
             <p>{{ store.name }}</p>
             <p>{{ store.storeType }}</p>
