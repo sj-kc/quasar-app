@@ -1,18 +1,24 @@
 <template>
   <div>
     <div v-if="!loaded">{{ this.$q.loading.show() }}</div>
-    <div v-if="loaded">
+    <q-layout v-if="loaded">
       {{ this.$q.loading.hide() }}
-      <h1>The Den Store</h1>
-      <div v-for="store in stores" :key="store.id">
-        <q-card class="my-card cursor-pointer">
-          <q-card-section @click="() => getInfo(store)">
-            <p>{{ store.name }}</p>
-            <p>{{ store.storeType }}</p>
-          </q-card-section>
-        </q-card>
-      </div>
-    </div>
+      <q-page-container class="row justify-center">
+        <h1 class="col-12 col-2">The Den Store</h1>
+        <div
+          v-for="store in stores"
+          :key="store.id"
+          class="col-12 col-md-3 q-ma-md"
+        >
+          <q-card class="my-card cursor-pointer">
+            <q-card-section @click="() => getInfo(store)">
+              <p>{{ store.name }}</p>
+              <p>{{ store.storeType }}</p>
+            </q-card-section>
+          </q-card>
+        </div>
+      </q-page-container>
+    </q-layout>
   </div>
 </template>
 
@@ -36,7 +42,10 @@ export default {
 
       this.$q.dialog({
         title: store.city,
-        message: `<p>Adress: ${address}</p> <p>City: ${city}</p> <p>Email: ${email}</p> <p> Phone: ${phone}</p>`,
+        message: `<p>Adress: ${address}</p>
+        <p>City: ${city}</p> 
+        <p>Email: ${email.length ? email : "No email"}</p> 
+        <p> Phone: ${phone}</p>`,
         html: true
       });
     }
