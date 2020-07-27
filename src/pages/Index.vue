@@ -1,25 +1,16 @@
 <template>
-  <div>
+  <main>
     <div v-if="!loaded">{{ this.$q.loading.show() }}</div>
-    <q-layout v-if="loaded">
+    <section v-if="loaded" class="card">
       {{ this.$q.loading.hide() }}
-      <q-page-container class="row justify-center">
-        <h1 class="col-12 col-2">The Den Store</h1>
-        <div
-          v-for="store in stores"
-          :key="store.id"
-          class="col-12 col-md-3 q-ma-md"
-        >
-          <q-card class="my-card cursor-pointer">
-            <q-card-section @click="() => getInfo(store)">
-              <p>{{ store.name }}</p>
-              <p>{{ store.storeType }}</p>
-            </q-card-section>
-          </q-card>
+      <div v-for="store in stores" :key="store.id" class="card_container">
+        <div @click="() => getInfo(store)" class="card_body">
+          <p>{{ store.name }}</p>
+          <p>{{ store.storeType }}</p>
         </div>
-      </q-page-container>
-    </q-layout>
-  </div>
+      </div>
+    </section>
+  </main>
 </template>
 
 <script>
@@ -50,7 +41,6 @@ export default {
       });
     }
   },
-
   created() {
     store.dispatch("fetchStores");
   }

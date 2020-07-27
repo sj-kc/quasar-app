@@ -10,7 +10,8 @@
     "predeploy": "quasar build",
     "deploy": "push-dir --dir=dist/spa --remote=gh-pages --branch=master",
     "lint": "eslint --ext .js,.vue ./",
-    "test": "echo \"No test specified\" && exit 0"
+    "test": "echo \"No test specified\" && exit 0",
+    "start": "quasar dev"
   },
   "dependencies": {
     "@quasar/extras": "^1.0.0",
