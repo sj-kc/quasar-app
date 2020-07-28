@@ -1,16 +1,19 @@
-// app global css in Sass form
 * 
     box-sizing: border-box 
 
-html 
-    padding: 5px
 
 body 
-    padding: 5px
+    align-items: center
+    padding-top: 40px
+    padding-bottom: 40px
     margin: 0
     background-color: $dark
 
-.card
+
+.card 
+    margin: 65px
+
+.card__section
     padding: 45px
     height: 600px
     display: flex
@@ -20,12 +23,17 @@ body
     justify-content: center
     align-content: center
 
-.card_container 
+.card__container 
     background-color: $red
     color: $grey-1
     margin: 5px
 
-.card_body
+.card__body
     cursor: pointer
     padding: 25px
 
+@media only screen and (max-width: $mediaMinWidth) 
+  .card__section 
+    display: inline
+    padding: 0
+  

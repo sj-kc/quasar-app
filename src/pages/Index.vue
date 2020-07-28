@@ -1,10 +1,10 @@
 <template>
-  <main>
+  <main class="card">
     <div v-if="!loaded">{{ this.$q.loading.show() }}</div>
-    <section v-if="loaded" class="card">
+    <section v-if="loaded" class="card__section">
       {{ this.$q.loading.hide() }}
-      <div v-for="store in stores" :key="store.id" class="card_container">
-        <div @click="() => getInfo(store)" class="card_body">
+      <div v-for="store in stores" :key="store.id" class="card__container">
+        <div @click="() => getInfo(store)" class="card__body">
           <p>{{ store.name }}</p>
           <p>{{ store.storeType }}</p>
         </div>
